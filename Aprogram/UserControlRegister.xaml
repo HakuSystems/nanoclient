@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Aprogram.UserControlRegister"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Aprogram"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Height="500" Width="350">
+    <Grid Background="#212121">
+        <Rectangle Height="280" VerticalAlignment="Top" RadiusY="2.656" RadiusX="2.656">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#F20457"/>
+                    <GradientStop Color="#FE5680" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <materialDesign:PackIcon Kind="Register" Background="Transparent" Foreground="White" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20"/>
+        <Rectangle Width="280" Height="320" Fill="#212121" VerticalAlignment="Bottom" Margin="0,100" RadiusY="4.167" RadiusX="4.167">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="1" Direction="0" Opacity="0.25" BlurRadius="10"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid Width="280" Height="320" VerticalAlignment="Bottom" Margin="0,100">
+            <TextBlock Text="Register" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30" Foreground="#FFF20457" FontSize="18" FontFamily="Roboto Regular"/>
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBox x:Name="userinput" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" Foreground="#FFF20457" BorderBrush="#F40057" FontFamily="Roboto Regular" FontSize="15"/>
+                <PasswordBox x:Name="passinput" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" Foreground="#FFF20457" BorderBrush="#F40057" FontFamily="Roboto Regular" FontSize="15"/>
+                <TextBox x:Name="emailinput" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" Foreground="#FFF20457" BorderBrush="#F40057" FontFamily="Roboto Regular" FontSize="15"/>
+                <TextBox x:Name="licenseinput" materialDesign:HintAssist.Hint="LicenseKey" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" Foreground="#FFF20457" BorderBrush="#F40057" FontFamily="Roboto Regular" FontSize="15"/>
+            </StackPanel>
+        </Grid>
+        <Button x:Name="registerbtn" Click="registerbtn_Click" VerticalAlignment="Bottom" Margin="0,85" Width="150" Content="Register" FontFamily="Roboto Regular" Background="#FFF20457"/>
+        <Button VerticalAlignment="Bottom" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" HorizontalAlignment="Center" Margin="40" Background="Transparent" BorderBrush="Transparent">
+            <TextBlock Text="Back to Login" Cursor="Hand" VerticalAlignment="Bottom" FontSize="10" HorizontalAlignment="Center" Foreground="#F40057" FontFamily="Roboto Regular"/>
+        </Button>
+        <Grid>
+            <materialDesign:Snackbar x:Name="notification" IsActive="False" Background="Transparent">
+                <materialDesign:SnackbarMessage Content="name" Foreground="White" ActionContent="Close" ActionClick="SnackbarMessage_ActionClick" />
+            </materialDesign:Snackbar>
+        </Grid>
+    </Grid>
+</UserControl>

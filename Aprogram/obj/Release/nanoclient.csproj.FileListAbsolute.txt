@@ -1,0 +1,10 @@
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\InitWindow.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\MainWindow.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\UserControlAccount.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\UserControlAdobe.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\UserControlLogin.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\UserControlRegister.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\App.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\nanoclient_MarkupCompile.cache
+C:\Users\lyze\source\repos\Aprogram\Aprogram\obj\Release\nanoclient_MarkupCompile.lref
