@@ -26,6 +26,7 @@ namespace Aprogram
 
         private void closebtn_Click(object sender, RoutedEventArgs e)
         {
+            API.Log(User.Username, "Closed Program");
             this.Close();
         }
 
