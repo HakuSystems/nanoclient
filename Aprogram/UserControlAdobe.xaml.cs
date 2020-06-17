@@ -26,21 +26,18 @@ namespace Aprogram
         public UserControlAdobe()
         {
             InitializeComponent();
-            API.Log(User.Username, "Opened Adobe Window");
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             if (File.Exists("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Creative Cloud.exe"))
             {
-                API.Log(User.Username, "Checking if Creative Could Exists");
                 MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("It seems u dont have the Creative Cloud Installed. Do you want to install it?", "Creative Cloud Installer", MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
                     notification.IsActive = true;
                     using (WebClient webClient = new WebClient())
                     {
-                        API.Log(User.Username, "Downloading Creative Cloud");
                         webClient.DownloadFile("https://notlyze.de/hBnSJPyWCOActKmENpwA/Set-up.exe", "Set-up.exe");
                         System.Diagnostics.Process.Start("Set-up.exe");
                         notification.Message.Content = "Please install Creative Cloud.";
@@ -61,7 +58,6 @@ namespace Aprogram
             patchbtn.IsEnabled = true;
             notification.IsActive = true;
             notification.Message.Content = "Click Patch!";
-            API.Log(User.Username, "Showing Patch Button");
         }
 
         private void SnackbarMessage_ActionClick(object sender, RoutedEventArgs e)
@@ -71,12 +67,10 @@ namespace Aprogram
 
         private void patchbtn_Click(object sender, RoutedEventArgs e)
         {
-            API.Log(User.Username, "Patching Adobe Files");
             notification.IsActive = true;
             notification.Message.Content = "Waiting for file..";
             if (ProgramBox.SelectedValue.ToString().Contains("PremierePro"))
             {
-
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
                 dlg.FileName = "Registration";
                 dlg.DefaultExt = ".dll";
@@ -99,8 +93,6 @@ namespace Aprogram
                 }
                 else
                 {
-                    API.Log(User.Username, "Caneled Patching");
-
                     notification.IsActive = true;
                     notification.Message.Content = "Canceled";
                 }
@@ -129,7 +121,6 @@ namespace Aprogram
                 }
                 else
                 {
-                    API.Log(User.Username, "Caneled Patching");
                     notification.IsActive = true;
                     notification.Message.Content = "Canceled";
                 }
@@ -158,7 +149,6 @@ namespace Aprogram
                 }
                 else
                 {
-                    API.Log(User.Username, "Caneled Patching");
                     notification.IsActive = true;
                     notification.Message.Content = "Canceled";
                 }
@@ -187,7 +177,6 @@ namespace Aprogram
                 }
                 else
                 {
-                    API.Log(User.Username, "Caneled Patching");
                     notification.IsActive = true;
                     notification.Message.Content = "Canceled";
                     ((InitWindow)Window.GetWindow(this)).maingrid.IsEnabled = true;
@@ -198,7 +187,6 @@ namespace Aprogram
 
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
-            API.Log(User.Username, "Completed Patching Adobe Files");
             notification.IsActive = true;
             notification.Message.Content = "Completed.";
             System.Windows.MessageBox.Show("Completed and Patched!");

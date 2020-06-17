@@ -27,7 +27,6 @@ namespace Aprogram
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            API.Log(User.Username, "Opened Account Tab");
             accountdata.Text = $" Username: {User.Username} \n Email: {User.Email} \n HWID: {User.HWID} \n IP: {User.IP} \n RegisterDate: {User.RegisterDate}";
             notification.Message.Content = $"Expiry: {User.Expiry}";
         }

@@ -28,7 +28,6 @@ namespace Aprogram
 
         private void loginbtn_Click(object sender, RoutedEventArgs e)
         {
-            API.Log(ApplicationSettings.Name, "Checking login Credentials");
             if (RememberCheck.IsChecked == true)
             {
                 Properties.Settings.Default.Username = usernameinput.Text;
@@ -45,7 +44,6 @@ namespace Aprogram
             {
                 notification.IsActive = true;
                 notification.Message.Content = "Please Wait..";
-                API.Log(ApplicationSettings.Name, "Opening MainWindow");
                 InitWindow init = new InitWindow();
                 init.InitializeComponent();
                 init.Show();
@@ -53,7 +51,6 @@ namespace Aprogram
             }
             else
             {
-                API.Log(ApplicationSettings.Name, "Failed to check Login Credentials");
                 notification.IsActive = true;
                 notification.Message.Content = "Failed to Login.";
                 notification.Message.ActionContent = "Ok";
@@ -62,7 +59,6 @@ namespace Aprogram
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            API.Log(ApplicationSettings.Name, "Login Window Opened");
             if (Properties.Settings.Default.Username != string.Empty)
             {
                 usernameinput.Text = Properties.Settings.Default.Username;

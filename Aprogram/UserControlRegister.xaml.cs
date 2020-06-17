@@ -23,12 +23,10 @@ namespace Aprogram
         public UserControlRegister()
         {
             InitializeComponent();
-            API.Log(ApplicationSettings.Name, "register Window Opened");
         }
 
         private void registerbtn_Click(object sender, RoutedEventArgs e)
         {
-            API.Log(ApplicationSettings.Name, "Checking Register Credentials");
             if (API.Register(userinput.Text, passinput.Password, emailinput.Text, licenseinput.Text))
             {
                 notification.IsActive = true;
@@ -38,7 +36,6 @@ namespace Aprogram
             }
             else
             {
-                API.Log(ApplicationSettings.Name, "Checking Register Credentials gone Wrong");
                 notification.IsActive = true;
                 notification.Message.Content = "Register Failed.";
                 notification.Message.ActionContent = "Ok";
@@ -53,7 +50,6 @@ namespace Aprogram
                 {
                     notification.IsActive = true;
                     notification.Message.Content = "Please Wait..";
-                    API.Log(ApplicationSettings.Name, "Opening MainWindow");
                     InitWindow init = new InitWindow();
                     init.InitializeComponent();
                     init.Show();
