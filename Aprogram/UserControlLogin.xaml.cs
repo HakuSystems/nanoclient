@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace Aprogram
     /// </summary>
     public partial class UserControlLogin : UserControl
     {
+        MySqlConnection connection = new MySqlConnection("Database=nanoclient;Data Source=127.0.0.1;User Id=lyze;Password=Noah@2017");
+
         public UserControlLogin()
         {
             InitializeComponent();
@@ -43,11 +46,25 @@ namespace Aprogram
             if (API.Login(usernameinput.Text, passinput.Password))
             {
                 notification.IsActive = true;
-                notification.Message.Content = "Please Wait..";
-                InitWindow init = new InitWindow();
-                init.InitializeComponent();
-                init.Show();
+                string insertQuery = "INSERT INTO logindata(nanoclient_username) VALUES('" + usernameinput.Text + "')";
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+                try
+                {
+                    if (cmd.ExecuteNonQuery() == 1)
+                    {
+                        InitWindow init = new InitWindow();
+                        init.InitializeComponent();
+                        init.Show();
+                        ((MainWindow)Window.GetWindow(this)).Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 ((MainWindow)Window.GetWindow(this)).Close();
+                connection.Close();
             }
             else
             {

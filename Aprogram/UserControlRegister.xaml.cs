@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Aprogram
     /// </summary>
     public partial class UserControlRegister : UserControl
     {
+        MySqlConnection connection = new MySqlConnection("Database=nanoclient;Data Source=127.0.0.1;User Id=lyze;Password=Noah@2017");
+
         public UserControlRegister()
         {
             InitializeComponent();
@@ -50,9 +53,25 @@ namespace Aprogram
                 {
                     notification.IsActive = true;
                     notification.Message.Content = "Please Wait..";
-                    InitWindow init = new InitWindow();
-                    init.InitializeComponent();
-                    init.Show();
+
+                    string insertQuery = "INSERT INTO registerdata(nanoclient_username,nanoclient_email,nanoclient_licenseKey) VALUES('" + userinput.Text + "','" + emailinput.Text + "','" + licenseinput.Text + "')";
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
+                    try
+                    {
+                        if (cmd.ExecuteNonQuery() == 1)
+                        {
+                            InitWindow init = new InitWindow();
+                            init.InitializeComponent();
+                            init.Show();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+
                     ((MainWindow)Window.GetWindow(this)).Close();
                 }
             }
