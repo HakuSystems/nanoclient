@@ -76,6 +76,14 @@ namespace Aprogram
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            if (ApplicationSettings.Freemode)
+            {
+                InitWindow init = new InitWindow();
+                init.InitializeComponent();
+                init.Show();
+                ((MainWindow)Window.GetWindow(this)).Close();
+            }
+
             if (Properties.Settings.Default.Username != string.Empty)
             {
                 usernameinput.Text = Properties.Settings.Default.Username;
